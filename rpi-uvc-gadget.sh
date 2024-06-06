@@ -118,7 +118,7 @@ create_uvc() {
 
 	echo "Initializing v4l2loopback"
 	modprobe v4l2loopback devices=1 video_nr=1 max_buffers=3 exclusive_caps=1 card_label="VirtualCam #0"
-	/home/john/v4l2loopback/utils/v4l2loopback-ctl set-caps /dev/video1 "YUYV:640x360@30"
+	/opt/uvc-gadget-webcam/v4l2loopback-ctl set-caps /dev/video1 "YUYV:640x360@30"
 
 
 	echo "	Creating UVC gadget functionality : $FUNCTION"
