@@ -59,6 +59,7 @@ echo "OK"
 
 echo "Installing driver scripts..."
 cp ./rpi-uvc-gadget.sh $DIRECTORY/rpi-uvc-gadget.sh
+#cp ./run-ffmpeg.sh $DIRECTORY/run-ffmpeg.sh
 cp ./uvc.py $DIRECTORY/uvc.py
 echo "OK"
 

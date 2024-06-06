@@ -631,7 +631,7 @@ pathDefaults:
   #   a regular expression.
   # * MTX_SOURCE_TYPE: source type
   # * MTX_SOURCE_ID: source ID
-  #runOnReady: ffmpeg -f rtsp -i rtsp://127.0.0.1:8554/webcam -pix_fmt yuv420p -f v4l2 /dev/video1
+  #runOnReady: /usr/bin/bash /opt/uvc-gadget-webcam/run-ffmpeg.sh
   runOnReady: ffmpeg -f rtsp -i rtsp://127.0.0.1:8554/webcam -pix_fmt yuyv422 -f v4l2 /dev/video1
   # Restart the command if it exits.
   runOnReadyRestart: no
