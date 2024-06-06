@@ -1,0 +1,108 @@
+john@rpi-node6:~ $ ./run-uvc.sh
+ERROR: ld.so: object '/usr/lib/uv4l/uv4lext/armv6l/libuv4lext.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32): ignored.
+Number of buffers requested = 3
+UVC: IO method requested is USER_PTR
+V4L2 device is HD Pro Webcam C920 on bus usb-0000:01:00.0-1.4
+V4L2: Getting current format: YUYV 640x480
+V4L2: Setting format to: YUYV 1280x720
+V4L2: Getting current format: YUYV 1280x720
+v4l2 open succeeded, file descriptor = 3
+uvc device is fe980000.usb on bus gadget.0
+uvc open succeeded, file descriptor = 4
+V4L2: Buffer 0 mapped at address 0x7fbc0fe000.
+V4L2: Buffer 1 mapped at address 0x7fbbf3c000.
+V4L2: Buffer 2 mapped at address 0x7fbbd7a000.
+V4L2: 3 buffers allocated.
+entity_id 1 req
+DEFAULT req
+control request (req 86 cs 04)
+entity_id 0 req
+UVC_VC_REQUEST_ERROR_CODE_CONTROL
+control request (req 81 cs 02)
+entity_id 1 req
+DEFAULT req
+control request (req 86 cs 09)
+entity_id 0 req
+UVC_VC_REQUEST_ERROR_CODE_CONTROL
+control request (req 81 cs 02)
+entity_id 2 req
+UVC_GET_INFO
+control request (req 86 cs 02)
+entity_id 2 req
+UVC_GET_MIN
+control request (req 82 cs 02)
+entity_id 2 req
+UVC_GET_MAX
+control request (req 83 cs 02)
+entity_id 2 req
+UVC_GET_RES
+control request (req 84 cs 02)
+entity_id 2 req
+UVC_GET_DEF
+control request (req 87 cs 02)
+streaming request (req 81 cs 01)
+streaming request (req 01 cs 01)
+setting probe control, length = 34
+streaming request (req 81 cs 01)
+streaming request (req 83 cs 01)
+streaming request (req 82 cs 01)
+streaming request (req 01 cs 01)
+setting probe control, length = 34
+streaming request (req 81 cs 01)
+streaming request (req 01 cs 02)
+setting commit control, length = 34
+uvc_handle_streamon_event() start
+UVC: 3 buffers allocated.
+uvc_video_reqbufs() retval 0
+if (!dev->run_standalone)
+v4l2_qbuf()
+v4l2_start_capturing()V4L2: Starting video stream.
+UVC: Starting video stream.
+entity_id 2 req
+UVC_GET_CUR
+control request (req 81 cs 02)
+entity_id 2 req
+UVC_GET_CUR
+control request (req 81 cs 02)
+UVC: Possible USB shutdown requested from Host, seen during VIDIOC_DQBUF with flags 0x00004040 triggered from flag 0x00000040
+entity_id 2 req
+UVC_GET_CUR
+control request (req 81 cs 02)
+entity_id 2 req
+UVC_GET_CUR
+control request (req 81 cs 02)
+UVC: Possible USB shutdown requested from Host, seen during VIDIOC_DQBUF with flags 0x00004040 triggered from flag 0x00000040
+UVC: Stopping video stream.
+streaming request (req 81 cs 01)
+streaming request (req 01 cs 01)
+setting probe control, length = 34
+streaming request (req 81 cs 01)
+streaming request (req 83 cs 01)
+streaming request (req 82 cs 01)
+streaming request (req 01 cs 01)
+setting probe control, length = 34
+streaming request (req 81 cs 01)
+streaming request (req 01 cs 02)
+setting commit control, length = 34
+uvc_handle_streamon_event() start
+UVC: 3 buffers allocated.
+uvc_video_reqbufs() retval 0
+if (!dev->run_standalone)
+v4l2_qbuf()
+v4l2_start_capturing()V4L2: Starting video stream.
+UVC: Starting video stream.
+entity_id 2 req
+UVC_GET_CUR
+control request (req 81 cs 02)
+entity_id 2 req
+UVC_GET_CUR
+control request (req 81 cs 02)
+UVC: Possible USB shutdown requested from Host, seen during VIDIOC_DQBUF with flags 0x00004040 triggered from flag 0x00000040
+entity_id 2 req
+UVC_GET_CUR
+control request (req 81 cs 02)
+entity_id 2 req
+UVC_GET_CUR
+control request (req 81 cs 02)
+UVC: Possible USB shutdown requested from Host, seen during VIDIOC_DQBUF with flags 0x00004040 triggered from flag 0x00000040
+UVC: Stopping video stream.

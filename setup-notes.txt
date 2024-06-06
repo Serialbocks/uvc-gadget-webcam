@@ -1,0 +1,25 @@
+# mediamtx
+https://github.com/bluenviron/mediamtx
+https://github.com/bluenviron/mediamtx/releases
+
+# v4l2loopback
+https://github.com/umlaeute/v4l2loopback.git
+sudo apt-get install v4l2loopback-dkms
+
+# uvc gadget
+https://www.raspberrypi.com/tutorials/plug-and-play-raspberry-pi-usb-webcam/
+echo "dtoverlay=dwc2,dr_mode=otg" | sudo tee -a /boot/firmware/config.txt
+sudo apt install git meson libcamera-dev libjpeg-dev
+
+uvc-gadget from tutorial: https://gitlab.freedesktop.org/camera/uvc-gadget
+uvc-gadget-orig: git://git.ideasonboard.org/uvc-gadget.git
+uvc-prog: https://github.com/wlhe/uvc-gadget.git
+uvc-kin: https://github.com/kinweilee/uvc-gadget.git
+
+# Install uv4l
+https://forums.raspberrypi.com/viewtopic.php?t=247305
+https://www.linux-projects.org/uv4l/installation/
+curl http://www.linux-projects.org/listing/uv4l_repo/lpkey.asc | sudo apt-key add -
+echo "deb http://www.linux-projects.org/listing/uv4l_repo/raspbian/stretch stretch main" | sudo tee /etc/apt/sources.list.d/uv4l.list
+sudo apt-get update
+sudo apt-get install uv4l uv4l-uvc uv4l-raspicam
