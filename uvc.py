@@ -1,11 +1,15 @@
-import os, sys
+import os
 import subprocess
-import time
 
-result = subprocess.run(['/home/john/rpi-uvc-gadget.sh', 'start'], capture_output=True, text=True)
+directory = '/opt/uvc-gadget-webcam/'
+driver_script = os.path.join(directory, 'rpi-uvc-gadget.sh')
+mediamtx = os.path.join(directory, 'mediamtx')
+uvc_gadget = os.path.join(directory, 'uvc-gadget')
+
+result = subprocess.run([driver_script, 'start'], capture_output=True, text=True)
 print(result.stdout)
-result = subprocess.Popen(['/home/john/mediamtx'], start_new_session=True)
+result = subprocess.Popen([mediamtx], start_new_session=True)
 print('Started mediamtx')
 
-result = subprocess.run(['uvc-prog/uvc-gadget', '-v', '/dev/video1', '-u', '/dev/video0', '-n3', '-f0', '-r0', '-s1', '-o1'], capture_output=True, text=True)
+result = subprocess.run([uvc_gadget, '-v', '/dev/video1', '-u', '/dev/video0', '-n3', '-f0', '-r0', '-s1', '-o1'], capture_output=True, text=True)
 print(result.stdout)
