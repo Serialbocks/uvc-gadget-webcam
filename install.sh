@@ -9,8 +9,9 @@ fi
 echo "Starting installation..."
 
 echo "Installing Dependencies..."
-sudo apt update
-sudo apt full-upgrade -y
+apt update
+apt full-upgrade -y
+apt install git meson libcamera-dev libjpeg-dev
 echo "OK"
 
 DIRECTORY='/opt/uvc-gadget-webcam'
