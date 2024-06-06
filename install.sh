@@ -8,7 +8,14 @@ fi
 
 echo "Starting installation..."
 
+echo "Installing Dependencies..."
+sudo apt update
+sudo apt full-upgrade -y
+echo "OK"
+
 DIRECTORY='/opt/uvc-gadget-webcam'
+SERVICE="uvc-gadget-webcam.service"
+SERVICE_PATH="/lib/systemd/system/$SERVICE"
 
 if [ ! -d "$DIRECTORY" ]; then
   echo "Creating target directory $DIRECTORY"
@@ -54,3 +61,28 @@ echo "Installing driver scripts..."
 cp ./rpi-uvc-gadget.sh $DIRECTORY/rpi-uvc-gadget.sh
 cp ./uvc.py $DIRECTORY/uvc.py
 echo "OK"
+
+echo "Enabling dtoverlay otg firmware..."
+echo "dtoverlay=dwc2,dr_mode=otg" | tee -a /boot/firmware/config.txt
+echo "OK"
+
+echo "Installing service..."
+echo "[Unit]" | tee $SERVICE_PATH
+echo "Description=UVC Webcam Gadget Stream Service" | tee -a $SERVICE_PATH
+echo "After=multi-user.target" | tee -a $SERVICE_PATH
+echo "" | tee -a $SERVICE_PATH
+echo "[Service]" | tee -a $SERVICE_PATH
+echo "Type=simple" | tee -a $SERVICE_PATH
+echo "WorkingDirectory=$DIRECTORY" | tee -a $SERVICE_PATH
+echo "ExecStart=/usr/bin/python $DIRECTORY/uvc.py" | tee -a $SERVICE_PATH
+echo "Restart=on-abort" | tee -a $SERVICE_PATH
+echo "" | tee -a $SERVICE_PATH
+echo "[Install]" | tee -a $SERVICE_PATH
+echo "WantedBy=multi-user.target" | tee -a $SERVICE_PATH
+chmod 644 $SERVICE_PATH
+chmod +x $DIRECTORY/uvc.py
+systemctl daemon-reload
+systemctl enable $SERVICE
+echo "OK"
+
+echo "Installation complete! Please restart to get driver working."
