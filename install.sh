@@ -11,7 +11,7 @@ echo "Starting installation..."
 echo "Installing Dependencies..."
 apt update
 apt full-upgrade -y
-apt install git meson libcamera-dev libjpeg-dev
+apt install git meson libcamera-dev libjpeg-dev -y
 echo "OK"
 
 DIRECTORY='/opt/uvc-gadget-webcam'
@@ -64,9 +64,15 @@ cp ./rpi-uvc-gadget.sh $DIRECTORY/rpi-uvc-gadget.sh
 cp ./uvc.py $DIRECTORY/uvc.py
 echo "OK"
 
-echo "Enabling dtoverlay otg firmware..."
-echo "dtoverlay=dwc2,dr_mode=otg" | tee -a /boot/firmware/config.txt
-echo "OK"
+DTOVERLAY_DIR="$DIRECTORY/dtoverlay"
+if [ ! -d "$DTOVERLAY_DIR" ]; then
+  mkdir $DTOVERLAY_DIR
+  echo "Enabling dtoverlay otg firmware..."
+  echo "dtoverlay=dwc2,dr_mode=otg" | tee -a /boot/firmware/config.txt
+  echo "OK"
+else
+  echo "dtoverlay already enabled"
+fi
 
 echo "Installing service..."
 echo "[Unit]" | tee $SERVICE_PATH
