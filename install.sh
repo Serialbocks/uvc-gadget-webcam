@@ -41,12 +41,16 @@ case "$1" in
 	;;
 
   journal)
-    journalctl -u uvc-gadget-webcam.service -f
+    journalctl -u $SERVICE -f
     exit 0
 	;;
 
-  *)
+  status)
+    systemctl status $SERVICE
+    exit 0
+  ;;
 
+  *)
 esac
 
 echo "Starting installation..."
