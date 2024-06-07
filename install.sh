@@ -10,6 +10,8 @@ fi
 DIRECTORY='/opt/uvc-gadget-webcam'
 SERVICE="uvc-gadget-webcam.service"
 SERVICE_PATH="/lib/systemd/system/$SERVICE"
+USER='john'
+VLC="cvlc --no-video --loop rtsp://192.168.0.180:8554/webcam &"
 
 case "$1" in
   start)
@@ -61,6 +63,9 @@ if [ ! -d "$DIRECTORY" ]; then
   apt full-upgrade -y
   apt install git meson libcamera-dev libjpeg-dev -y
   echo "OK"
+
+  echo "Setting VLC to stream audio on startup"
+  echo $VLC | tee -a /home/$USER/.bashrc
 
   echo "Creating target directory $DIRECTORY"
   mkdir $DIRECTORY
