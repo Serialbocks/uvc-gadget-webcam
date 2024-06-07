@@ -1,5 +1,4 @@
 import os
-import signal
 import subprocess
 import time
 
@@ -17,11 +16,11 @@ print(result.stdout)
 
 while True:
     time.sleep(5)
-    ffmpeg_process = subprocess.Popen(ffmpeg.split(' '), shell=True, stdout=subprocess.PIPE, start_new_session=True, preexec_fn=os.setsid)
-    vlc_process = subprocess.Popen(vlc.split(' '), shell=True, stdout=subprocess.PIPE, start_new_session=True, preexec_fn=os.setsid)
+    ffmpeg_process = subprocess.Popen(ffmpeg.split(' '), start_new_session=True, stdout=subprocess.PIPE)
+    vlc_process = subprocess.Popen(vlc.split(' '), start_new_session=True, stdout=subprocess.PIPE)
     result = subprocess.run(uvc_gadget.split(' '), capture_output=True, text=True)
     print(result.stdout)
     # If UVC gadget program completes, kill the FFMPEG and VLC processes and try again
-    os.killpg(os.getpgid(vlc_process.pid), signal.SIGTERM)
-    os.killpg(os.getpgid(ffmpeg_process.pid), signal.SIGTERM)
+    ffmpeg_process.kill()
+    vlc_process.kill()
 
