@@ -14,7 +14,7 @@ print(result.stdout)
 while True:
     
     ffmpeg_process = subprocess.Popen(ffmpeg.split(' '), start_new_session=True, stdout=subprocess.PIPE)
-    time.sleep(5)
+    time.sleep(12)
     uvc_process = subprocess.run(uvc_gadget.split(' '), capture_output=True, text=True)
     uvc_process.wait()
     print(result.stdout)
