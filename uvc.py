@@ -15,12 +15,14 @@ print(result.stdout)
 #print('Started mediamtx')
 
 while True:
-    time.sleep(5)
+    
     ffmpeg_process = subprocess.Popen(ffmpeg.split(' '), start_new_session=True, stdout=subprocess.PIPE)
     vlc_process = subprocess.Popen(vlc.split(' '), start_new_session=True, stdout=subprocess.PIPE)
+    time.sleep(5)
     result = subprocess.run(uvc_gadget.split(' '), capture_output=True, text=True)
     print(result.stdout)
     # If UVC gadget program completes, kill the FFMPEG and VLC processes and try again
     ffmpeg_process.kill()
     vlc_process.kill()
+    time.sleep(5)
 
