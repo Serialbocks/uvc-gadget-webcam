@@ -64,8 +64,8 @@ if [ ! -d "$DIRECTORY" ]; then
   apt install git meson libcamera-dev libjpeg-dev -y
   echo "OK"
 
-  echo "Setting VLC to stream audio on startup"
-  echo $VLC | tee -a /home/$USER/.bashrc
+  #echo "Setting VLC to stream audio on startup"
+  #echo $VLC | tee -a /home/$USER/.bashrc
 
   echo "Creating target directory $DIRECTORY"
   mkdir $DIRECTORY
