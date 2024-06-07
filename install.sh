@@ -11,7 +11,7 @@ DIRECTORY='/opt/uvc-gadget-webcam'
 SERVICE="uvc-gadget-webcam.service"
 SERVICE_PATH="/lib/systemd/system/$SERVICE"
 USER='john'
-VLC="cvlc --no-video --loop rtsp://192.168.0.180:8554/webcam &"
+VLC="cvlc --no-video --loop -network-caching=0 rtsp://192.168.0.180:8554/webcam &"
 
 case "$1" in
   start)
