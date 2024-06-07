@@ -16,6 +16,8 @@ while True:
     ffmpeg_process = subprocess.Popen(ffmpeg.split(' '), start_new_session=True, stdout=subprocess.PIPE)
     time.sleep(5)
     uvc_process = subprocess.run(uvc_gadget.split(' '), capture_output=True, text=True)
+    uvc_process.wait()
+    print(result.stdout)
     # If UVC gadget program completes, kill ffmpeg and loop
     ffmpeg_process.kill()
     time.sleep(5)
