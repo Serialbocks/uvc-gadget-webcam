@@ -55,14 +55,13 @@ esac
 
 echo "Starting installation..."
 
-echo "Installing Dependencies..."
-apt update
-apt full-upgrade -y
-apt install git meson libcamera-dev libjpeg-dev -y
-echo "OK"
-
-
 if [ ! -d "$DIRECTORY" ]; then
+  echo "Installing Dependencies..."
+  apt update
+  apt full-upgrade -y
+  apt install git meson libcamera-dev libjpeg-dev -y
+  echo "OK"
+
   echo "Creating target directory $DIRECTORY"
   mkdir $DIRECTORY
 else
