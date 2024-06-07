@@ -17,12 +17,11 @@ print(result.stdout)
 while True:
     
     ffmpeg_process = subprocess.Popen(ffmpeg.split(' '), start_new_session=True, stdout=subprocess.PIPE)
-    vlc_process = subprocess.Popen(vlc.split(' '), start_new_session=True, stdout=subprocess.PIPE)
+    #vlc_process = subprocess.Popen(vlc.split(' '), start_new_session=True, stdout=subprocess.PIPE)
     time.sleep(5)
-    result = subprocess.run(uvc_gadget.split(' '), capture_output=True, text=True)
-    print(result.stdout)
+    uvc_process = subprocess.Popen(uvc_gadget.split(' '), start_new_session=True, stdout=subprocess.PIPE)
     # If UVC gadget program completes, kill the FFMPEG and VLC processes and try again
     ffmpeg_process.kill()
-    vlc_process.kill()
+    #vlc_process.kill()
     time.sleep(5)
 
