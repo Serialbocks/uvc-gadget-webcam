@@ -6,6 +6,37 @@ if [ `id -u` -ne 0 ]
   exit
 fi
 
+
+DIRECTORY='/opt/uvc-gadget-webcam'
+SERVICE="uvc-gadget-webcam.service"
+SERVICE_PATH="/lib/systemd/system/$SERVICE"
+
+case "$1" in
+  start)
+    echo "Starting service..."
+    systemctl start $SERVICE
+    exit 0
+	;;
+
+  stop)
+    systemctl stop $SERVICE
+    exit 0
+  ;;
+
+  enable)
+    systemctl enable $SERVICE
+    exit 0
+	;;
+
+  disable)
+    systemctl disable $SERVICE
+    exit 0
+	;;
+
+  *)
+
+esac
+
 echo "Starting installation..."
 
 echo "Installing Dependencies..."
@@ -14,9 +45,6 @@ apt full-upgrade -y
 apt install git meson libcamera-dev libjpeg-dev -y
 echo "OK"
 
-DIRECTORY='/opt/uvc-gadget-webcam'
-SERVICE="uvc-gadget-webcam.service"
-SERVICE_PATH="/lib/systemd/system/$SERVICE"
 
 if [ ! -d "$DIRECTORY" ]; then
   echo "Creating target directory $DIRECTORY"
