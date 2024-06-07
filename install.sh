@@ -15,21 +15,33 @@ case "$1" in
   start)
     echo "Starting service..."
     systemctl start $SERVICE
+    echo "OK"
     exit 0
 	;;
 
   stop)
+    echo "Stopping service..."
     systemctl stop $SERVICE
+    echo "OK"
     exit 0
   ;;
 
   enable)
+    echo "Enabling service..."
     systemctl enable $SERVICE
+    echo "OK"
     exit 0
 	;;
 
   disable)
+    echo "Disabling service..."
     systemctl disable $SERVICE
+    echo "OK"
+    exit 0
+	;;
+
+  journal)
+    journalctl -u uvc-gadget-webcam.service -f
     exit 0
 	;;
 
