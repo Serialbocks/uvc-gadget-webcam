@@ -1002,7 +1002,7 @@ static int uvc_video_process(struct uvc_device *dev)
                 "Host, seen during VIDIOC_DQBUF with flags 0x%08x triggered from flag 0x%08x\n",
                     ubuf.flags,
                     V4L2_BUF_FLAG_ERROR);
-            return 0;
+            //return 0;
         }
 
         /* Queue the buffer to V4L2 domain */
